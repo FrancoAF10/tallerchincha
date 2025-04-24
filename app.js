@@ -16,6 +16,10 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname,'public')))
 
+
+//motor de plantillas
+app.set('view engine','ejs');
+app.set('views',path.join(__dirname,'views'))
 //configuración rutas
 app.use('/',rutaVehiculo) //principal
 //app.use('/api/marcas',rutaMarca)//suministro de datos
