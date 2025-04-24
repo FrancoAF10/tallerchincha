@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-<form action="" id="formulario-registro" autocomplete="off" method="post">
+<form action="/create" id="formulario-registro" autocomplete="off" method="post">
 <div class="card">
 
 <div class="card-header"><Strong>Registro</Strong></div>
@@ -8,10 +8,11 @@
   <div class="row g-2">
       <div class="col-md-6 mb-2">
         <div class="form-floating">
-          <select name="" id="" class="form-select" required>
+          <select name="marcas" id="marcas" class="form-select" required>
             <option value="" selected disabled>Seleccione</option>
-            <option value="Kia">Kia</option>
-
+            <% marcas.forEach(element => { %>
+             <option value= "<%= element.idmarca %> "> <%= element.marca %></option>
+            <% }) %>
           </select>
           <label for="form-label">Marcas</label>
         </div>
@@ -37,7 +38,7 @@
           <option value="Diesel">Diesel</option>
           <option value="Gasolina">Gasolina</option>
           <option value="GLP">GLP</option>
-          <option value="GNP">GNP</option>
+          <option value="GNV">GNV</option>
           <option value="Híbrido">Híbrido</option>
         </select>
         <label for="form-label">Combustible</label>
@@ -89,7 +90,7 @@
         cancelButtonText:'cancelar'
       }).then((result)=>{
         if(result.isConfirmed){
-          console.log("Guardando Datos")
+          formulario.submit()
         }
       })
     })
